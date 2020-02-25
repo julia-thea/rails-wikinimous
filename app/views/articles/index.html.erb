@@ -1,15 +1,14 @@
 <h1>Articles</h1>
+<%= link_to "Add an article", articles_new_path %>
 <ul>
   <% @articles.each do |article| %>
-    <li> <h2><%= link_to article[:title], article_path(article[:id]) %></h2> <br><%= article[:content] %></li>
+    <li> <h2><%= link_to article[:title], article_path(article) %></h2> 
+    <br><%= article[:content] %>
+    <p><%= link_to "Edit the article", edit_article_path(article) %></p>
+    <p><%= link_to "Remove an article", article_path(article), method: :delete %></p>
+    </li>
   <% end %>
 </ul>
-<h2>Submit your article</h2>
-<form action="articles" method ="post">
-<%= hidden_field_tag :authenticity_token, form_authenticity_token %><input type="text" name="title" placeholder="Article title">
-<input type="text" name="content" placeholder="Content">
-<input type="submit" value="Submit">
-</form>
 
 
 
